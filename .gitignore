@@ -1,20 +1,49 @@
-# Ignored
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+obj/
 [Bb]in
 [Dd]ebug*/
-*/*/*/*/*[Rr]e[Ss]harper*/*
-*/*/*/*[Rr]e[Ss]harper*/*
-*/*/*[Rr]e[Ss]harper*/*
-*/*[Rr]e[Ss]harper*/*
-*[Rr]e[Ss]harper*/*
-*.log
-tools/nant/WhiteCustomTasks/*.dll
-tools/nant/WhiteCustomTasks/*.pdb
-*.suo
-*.cache
-*.user
-*.xap
-Release/*
-Output
-Output/Components/*/*.dll
-Output/Components/*/*.pdb
-Output/Components/*/*.config
+[Rr]elease*/
+Ankh.NoLoad
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+#Project files
+[Bb]uild/
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+#NuGet
+packages/
