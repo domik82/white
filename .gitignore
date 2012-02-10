@@ -45,5 +45,8 @@ _ReSharper*/
 # Office Temp Files
 ~$*
 
+#Binaries
+Output/
+
 #NuGet
 packages/
