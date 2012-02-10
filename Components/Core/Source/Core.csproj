@@ -71,20 +71,12 @@
     <Reference Include="log4net">
       <HintPath>..\..\..\packages\log4net.1.2.11\lib\net35-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PresentationFramework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -96,9 +88,8 @@
     <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Xstream.Core, Version=1.0.2722.20556, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Xstream.Core.dll</HintPath>
+    <Reference Include="Xstream.Core">
+      <HintPath>..\..\..\packages\xstream-dot-net.1.0.3552.35177\lib\net20\Xstream.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
