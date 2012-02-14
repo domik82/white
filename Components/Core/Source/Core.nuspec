@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>White-Core</id>
+    <version>1.0.0</version>
+    <title>White-Core</title>
+    <authors>jagui</authors>
+    <owners>jagui</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>White-Core</description>
+    <copyright>Copyright 2012</copyright>
+    <dependencies>
+      <dependency id="Bricks-Toolkit" version="1.0.0" />
+      <dependency id="xstream-dot-net" version="1.0.0"/>
+      <dependency id="log4net" version="1.2.11"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\..\Output\Components\Core\White.Core.dll" target="lib\net20"/>
+  </files>
+</package>
