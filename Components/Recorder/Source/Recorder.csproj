@@ -58,17 +58,11 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bricks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Bricks.dll</HintPath>
+    <Reference Include="Bricks">
+      <HintPath>..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.dll</HintPath>
     </Reference>
-    <Reference Include="Bricks.RuntimeFramework, Version=1.0.2873.24151, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Bricks.RuntimeFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\log4net.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\packages\log4net.2.0.0\lib\net35-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <Private>False</Private>
@@ -143,6 +137,7 @@
       <DependentUpon>WindowBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="white.snk" />
     <Compile Include="Configuration\RecorderAppXmlConfiguration.cs" />
     <Compile Include="RecorderForm.cs" />

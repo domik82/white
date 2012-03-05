@@ -58,24 +58,23 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bricks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Bricks.dll</HintPath>
+    <Reference Include="Bricks">
+      <HintPath>..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.dll</HintPath>
     </Reference>
-    <Reference Include="Bricks.RuntimeFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Bricks.RuntimeFramework.dll</HintPath>
+    <Reference Include="Bricks.RuntimeFramework">
+      <HintPath>..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.RuntimeFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Castle.Core.dll</HintPath>
+    <Reference Include="Bricks.Testing">
+      <HintPath>..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.Testing.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\log4net.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\packages\Castle.Core.3.0.0.4001\lib\net35\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
-      <Private>False</Private>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\packages\log4net.1.2.11\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -96,9 +95,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Output\Components\Reporting\White.Reporting.dll</HintPath>
     </Reference>
-    <Reference Include="Xstream.Core, Version=1.0.2902.37328, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Xstream.Core.dll</HintPath>
+    <Reference Include="Xstream.Core">
+      <HintPath>..\..\..\packages\xstream-dot-net.1.0.3552.35177\lib\net20\Xstream.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
