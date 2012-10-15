@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
@@ -172,6 +173,9 @@ namespace White.Core.UIItems
 
         public virtual bool Visible
         {
+            // TODO: add native visible http://msdn.microsoft.com/en-us/library/ms633530
+//            [DllImport("user32.dll", CharSet=CharSet.Auto)]
+//            public static extern bool IsWindowVisible(IntPtr hWnd);
             get { return !automationElement.Current.IsOffscreen; }
         }
 
