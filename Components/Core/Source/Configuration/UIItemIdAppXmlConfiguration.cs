@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Bricks;
 using White.Core.Logging;
 
+
 namespace White.Core.Configuration
 {
     public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, UIItemIdConfiguration

@@ -19,6 +19,7 @@ namespace White.Core.Configuration
         static CoreAppXmlConfiguration()
         {
             defaultValues.Add("BusyTimeout", 5000);
+            defaultValues.Add("SearchTimeout", 5000);
             defaultValues.Add("WaitBasedOnHourGlass", true);
             defaultValues.Add("WorkSessionLocation", ".");
             defaultValues.Add("UIAutomationZeroWindowBugTimeout", 5000);
@@ -61,6 +62,12 @@ namespace White.Core.Configuration
         {
             get { return S.ToInt(usedValues["BusyTimeout"]); }
             set { SetUsedValue("BusyTimeout", value); }
+        }
+
+        public virtual int SearchTimeout
+        {
+            get { return S.ToInt(usedValues["SearchTimeout"]); }
+            set { SetUsedValue("SearchTimeout", value); }
         }
 
         public virtual bool WaitBasedOnHourGlass

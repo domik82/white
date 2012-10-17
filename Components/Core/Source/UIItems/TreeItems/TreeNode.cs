@@ -30,6 +30,14 @@ namespace White.Core.UIItems.TreeItems
             return ValueOfEquals(ExpandCollapsePattern.ExpandCollapseStateProperty, ExpandCollapseState.Expanded);
         }
 
+        public virtual TreeNode Parent
+        {
+            get
+            {
+                return new Win32TreeNode(automationElement.CachedParent, actionListener);                
+            }
+        }
+
         public virtual ExpandCollapseState DisplayState
         {
             get { return (ExpandCollapseState) Property(ExpandCollapsePattern.ExpandCollapseStateProperty); }
@@ -53,6 +61,7 @@ namespace White.Core.UIItems.TreeItems
         public virtual void Select()
         {
             actionListener.ActionPerforming(this);
+            Focus();            
             mouse.Click(SelectPoint, actionListener);
         }
 

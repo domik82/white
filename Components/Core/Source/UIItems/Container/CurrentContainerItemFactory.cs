@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using Bricks.RuntimeFramework;
+using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.Finder;
 using White.Core.Mappings;
@@ -41,6 +43,11 @@ namespace White.Core.UIItems.Container
             return windowSession.Get(current, searchCriteria, actionListener);
         }
 
+        public virtual IUIItem Find(SearchCriteria searchCriteria, WindowSession windowSession, TimeSpan timeout)
+        {
+            return windowSession.Get(current, searchCriteria, actionListener,timeout);
+        }
+
         public virtual void ReInitialize(InitializeOption option)
         {
             if (option.Cached) cachedContainerItemFactory = CreateCacheFactory(InitializeOption.NoCache);
@@ -71,6 +78,16 @@ namespace White.Core.UIItems.Container
         public virtual UIItemCollection FindAll(SearchCriteria criteria)
         {
             return current.GetAll(criteria);
+        }
+
+        internal IUIItem Find(SearchCriteria searchCriteria, WindowSession windowSession, TimeSpan? timeout)
+        {
+            if (timeout == null)
+            {
+                timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);
+            }
+            
+            return windowSession.Get(current, searchCriteria, actionListener, timeout);
         }
     }
 }

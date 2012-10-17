@@ -10,6 +10,7 @@ namespace White.Core.Configuration
     public interface CoreConfiguration
     {
         int BusyTimeout { get; set; }
+        int SearchTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }
         DynamicProxyInterceptors Interceptors { get; }
         DirectoryInfo WorkSessionLocation { get; set; }

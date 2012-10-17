@@ -6,6 +6,7 @@ using Bricks.Core;
 using Bricks.RuntimeFramework;
 using Castle.DynamicProxy;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Interceptors;
@@ -70,6 +71,16 @@ namespace White.Core.UIItems
         /// <param name="primaryIdentification">For managed application this is the name provided in application code and unmanaged application this is 
         /// the text or label next to it based identification</param>
         /// <returns>First item of supplied type and identification</returns>
+        public virtual T Get<T>(string primaryIdentification, TimeSpan? timeout = null) where T : UIItem
+        {
+            if (timeout == null)
+            {
+                timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);
+            }
+
+            return Get<T>(SearchCriteria.ByAutomationId(primaryIdentification),timeout);
+        }
+
         public virtual T Get<T>(string primaryIdentification) where T : UIItem
         {
             return Get<T>(SearchCriteria.ByAutomationId(primaryIdentification));
@@ -83,9 +94,30 @@ namespace White.Core.UIItems
         /// <typeparam name="T"></typeparam>
         /// <param name="searchCriteria">Criteria provided to search UIItem</param>
         /// <returns>First items matching the type and criteria</returns>
-        public virtual T Get<T>(SearchCriteria searchCriteria) where T : UIItem
+        public virtual T Get<T>(SearchCriteria searchCriteria, TimeSpan? timeout = null) where T : UIItem
         {
-            return (T) Get(searchCriteria.AndControlType(typeof (T)));
+            if (timeout == null)
+            {
+                timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);
+            }
+            return (T)Get(searchCriteria.AndControlType(typeof(T)), timeout);
+        }
+
+
+        private object Get(SearchCriteria searchCriteria, TimeSpan? timeout)
+        {
+//            throw new NotImplementedException();
+            try
+            {
+                IUIItem uiItem = currentContainerItemFactory.Find(searchCriteria, windowSession, timeout);
+                HandleIfCustomUIItem(uiItem);
+                HandleIfUIItemContainer(uiItem);
+                return uiItem;
+            }
+            catch (Exception e)
+            {
+                throw new WhiteException(Debug.Details(automationElement), e);
+            }
         }
 
         /// <summary>
@@ -98,6 +130,21 @@ namespace White.Core.UIItems
             try
             {
                 IUIItem uiItem = currentContainerItemFactory.Find(searchCriteria, windowSession);
+                HandleIfCustomUIItem(uiItem);
+                HandleIfUIItemContainer(uiItem);
+                return uiItem;
+            }
+            catch (Exception e)
+            {
+                throw new WhiteException(Debug.Details(automationElement), e);
+            }
+        }
+
+        public virtual IUIItem Get(SearchCriteria searchCriteria,TimeSpan timeout)
+        {
+            try
+            {
+                IUIItem uiItem = currentContainerItemFactory.Find(searchCriteria, windowSession, timeout);
                 HandleIfCustomUIItem(uiItem);
                 HandleIfUIItemContainer(uiItem);
                 return uiItem;

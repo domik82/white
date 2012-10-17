@@ -62,7 +62,7 @@
     <Reference Include="System.Windows.Browser" />
     <Reference Include="White.CustomControls.Silverlight, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\customControls\White.CustomControls.Silverlight.dll</HintPath>
+      <HintPath>..\..\..\..\Output\Components\$(ConfigurationName)\customControls\White.CustomControls.Silverlight.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

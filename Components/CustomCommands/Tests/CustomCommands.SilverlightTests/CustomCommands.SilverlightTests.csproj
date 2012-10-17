@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Output\Components\CustomCommands\</OutputPath>
+    <OutputPath>..\..\..\..\Output\Components\Debug\CustomCommands\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,7 +47,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\Output\Components\Release\CustomCommands\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -71,15 +71,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="White.Core, Version=0.2.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\Core\White.Core.dll</HintPath>
+	  <HintPath>..\..\..\..\Output\Components\$(ConfigurationName)\Core\White.Core.dll</HintPath>
     </Reference>
     <Reference Include="White.WebBrowser, Version=0.2.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\WebBrowser\White.WebBrowser.dll</HintPath>
+	  <HintPath>..\..\..\..\Output\Components\$(ConfigurationName)\WebBrowser\White.WebBrowser.dll</HintPath>
     </Reference>
     <Reference Include="White.WebBrowser.UITests, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\WebBrowser\White.WebBrowser.UITests.dll</HintPath>
+	  <HintPath>..\..\..\..\Output\Components\$(ConfigurationName)\WebBrowser\White.WebBrowser.UITests.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
