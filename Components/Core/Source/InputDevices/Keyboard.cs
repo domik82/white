@@ -64,18 +64,25 @@ namespace White.Core.InputDevices
 
         public virtual void Send(string keysToType, ActionListener actionListener)
         {
-            if (heldKeys.Count > 0) keysToType = keysToType.ToLower();
-
-            CapsLockOn = false;
-            foreach (char c in keysToType)
+            if (keysToType!=null)
             {
-                short key = VkKeyScan(c);
-                if (c.Equals('\r')) continue;
+                if (heldKeys.Count > 0) keysToType = keysToType.ToLower();
 
-                if (ShiftKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
-                Press(key, false);
-                if (ShiftKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
-                actionListener.ActionPerformed(Action.WindowMessage);
+                CapsLockOn = false;
+                foreach (char c in keysToType)
+                {
+                    short key = VkKeyScan(c);
+                    if (c.Equals('\r')) continue;
+
+                    if (ShiftKeyIsNeeded(key)) SendKeyDown((short)KeyboardInput.SpecialKeys.SHIFT, false);
+                    Press(key, false);
+                    if (ShiftKeyIsNeeded(key)) SendKeyUp((short)KeyboardInput.SpecialKeys.SHIFT, false);
+                    actionListener.ActionPerformed(Action.WindowMessage);
+                }
+            }
+            else
+            {
+                throw new InputDeviceException(string.Format("Cannot send null value to keyboard"));
             }
         }
 

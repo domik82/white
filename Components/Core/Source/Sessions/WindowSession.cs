@@ -43,7 +43,7 @@ namespace White.Core.Sessions
             if (location.Equals(RectX.UnlikelyWindowPosition))
             {
                 WhiteLogger.Instance.Debug("[PositionBasedSearch] Could not find based on position, finding using search.");
-                return Create(containerItemFactory, searchCriteria, actionListener);
+                return Create(containerItemFactory, searchCriteria, actionListener,null);
             }
 
             AutomationElement automationElement = AutomationElementX.GetAutomationElementFromPoint(location);
@@ -54,7 +54,7 @@ namespace White.Core.Sessions
             }
 
             WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] UIItem {0} changed its position, finding using search.", searchCriteria);
-            return Create(containerItemFactory, searchCriteria, actionListener);
+            return Create(containerItemFactory, searchCriteria, actionListener,null);
         }
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener, TimeSpan timeout)
@@ -106,8 +106,15 @@ namespace White.Core.Sessions
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener, TimeSpan? timeout)
         {
-            WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
-
+            if (initializeOption!=null)
+            {
+                WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);    
+            }
+            else
+            {
+                WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0})", searchCriteria);
+            }
+            
             if (timeout == null)
             {
                 timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);

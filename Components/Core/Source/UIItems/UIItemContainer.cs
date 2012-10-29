@@ -246,12 +246,12 @@ namespace White.Core.UIItems
 
         public virtual MenuBar MenuBar
         {
-            get { return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework)); }
+            get { return (MenuBar)Get(SearchCriteria.ForMenuBar(Framework),null); }
         }
 
         public virtual MenuBar GetMenuBar(SearchCriteria searchCriteria)
         {
-            return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework).Merge(searchCriteria));
+            return (MenuBar)Get(SearchCriteria.ForMenuBar(Framework).Merge(searchCriteria), null);
         }
 
         public virtual List<MenuBar> MenuBars
