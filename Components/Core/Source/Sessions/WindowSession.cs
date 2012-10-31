@@ -38,12 +38,13 @@ namespace White.Core.Sessions
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
         {
+
             WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
             Point location = windowItemsMap.GetItemLocation(searchCriteria);
             if (location.Equals(RectX.UnlikelyWindowPosition))
             {
                 WhiteLogger.Instance.Debug("[PositionBasedSearch] Could not find based on position, finding using search.");
-                return Create(containerItemFactory, searchCriteria, actionListener,null);
+                return Create(containerItemFactory, searchCriteria, actionListener, null);
             }
 
             AutomationElement automationElement = AutomationElementX.GetAutomationElementFromPoint(location);
@@ -54,7 +55,8 @@ namespace White.Core.Sessions
             }
 
             WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] UIItem {0} changed its position, finding using search.", searchCriteria);
-            return Create(containerItemFactory, searchCriteria, actionListener,null);
+            return Create(containerItemFactory, searchCriteria, actionListener, null);    
+
         }
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener, TimeSpan timeout)
@@ -84,7 +86,12 @@ namespace White.Core.Sessions
             var item = (IUIItem)clock.Perform(() => containerItemFactory.Get(searchCriteria, actionListener), matched, expired);
             WhiteLogger.Instance.DebugFormat("Create stop with timeout  not nullable");
             if (item == null) return null;
-            windowItemsMap.Add(item.Location, searchCriteria);
+            if (windowItemsMap != null)
+            {
+                windowItemsMap.Add(item.Location, searchCriteria);
+            }
+            else
+                WhiteLogger.Instance.DebugFormat("No windowItemsMap object for item {0}", searchCriteria);
             return item;
         }
 
@@ -125,27 +132,38 @@ namespace White.Core.Sessions
         //TODO: nullable timeot problem
         private IUIItem Create(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener, TimeSpan? timeout = null)
         {
-            var timeoutIn = new TimeSpan();
+            try
+            {
+                var timeoutIn = new TimeSpan();
             
-            if (timeout == null)
-            {
-                timeoutIn = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);
-
+                if (timeout == null)
+                {
+                    timeoutIn = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.SearchTimeout);
+                }
+                else
+                {
+                    timeoutIn = timeout.Value;
+                }
+                var recheckTime = TimeSpan.FromMilliseconds(50);
+                var clock = new Clock((int)timeoutIn.TotalMilliseconds, (int)recheckTime.TotalMilliseconds);
+                Clock.Matched matched = obj => obj != null;
+                Clock.Expired expired = () => null;
+                WhiteLogger.Instance.DebugFormat("Create UIItem start, timeout {0}", timeoutIn.ToString());
+                var item = (IUIItem)clock.Perform(() => containerItemFactory.Get(searchCriteria, actionListener), matched, expired);
+                WhiteLogger.Instance.DebugFormat("Create UIItem stop");
+                if (item == null) return null;
+                if (windowItemsMap != null)
+                {
+                    windowItemsMap.Add(item.Location, searchCriteria);
+                }
+                else
+                    WhiteLogger.Instance.DebugFormat("No windowItemsMap for item {0}", searchCriteria);
+                return item;
             }
-            else
+            catch (Exception e)
             {
-                timeoutIn = timeout.Value;
+                throw new WhiteException("White.Core.Sessions.Get IUIItem ", e);
             }
-            var recheckTime = TimeSpan.FromMilliseconds(50);
-            var clock = new Clock((int)timeoutIn.TotalMilliseconds, (int)recheckTime.TotalMilliseconds);
-            Clock.Matched matched = obj => obj != null;
-            Clock.Expired expired = () => null;
-            WhiteLogger.Instance.DebugFormat("Create UIItem start");
-            var item = (IUIItem)clock.Perform(() => containerItemFactory.Get(searchCriteria, actionListener), matched, expired);
-            WhiteLogger.Instance.DebugFormat("Create UIItem stop");
-            if (item == null) return null;
-            windowItemsMap.Add(item.Location, searchCriteria);
-            return item;
         }
     }
 }
