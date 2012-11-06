@@ -11,6 +11,7 @@ namespace White.Core.Configuration
     {
         int BusyTimeout { get; set; }
         int SearchTimeout { get; set; }
+        int KillApplicationTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }
         DynamicProxyInterceptors Interceptors { get; }
         DirectoryInfo WorkSessionLocation { get; set; }

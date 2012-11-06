@@ -174,8 +174,12 @@ namespace White.Core
         {
             try
             {
-                process.Kill();
-                process.WaitForExit();
+                var timeout = CoreAppXmlConfiguration.Instance.KillApplicationTimeout;
+
+                if (!process.WaitForExit(timeout))
+                {
+                    process.Kill();
+                }
             }
             catch
             {
