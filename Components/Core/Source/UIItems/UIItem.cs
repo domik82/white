@@ -103,7 +103,7 @@ namespace White.Core.UIItems
 
         public virtual Point ClickablePoint
         {
-            get { return (Point) Property(AutomationElement.ClickablePointProperty); }
+            get { return (Point) AutomationElement.GetCurrentPropertyValue(AutomationElement.ClickablePointProperty); }
         }
 
         public virtual string AccessKey

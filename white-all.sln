@@ -28,9 +28,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Core.UITests", "Components\Core\Tests\UITests\White.Core.UITests.csproj", "{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Components\Repository\Source\Repository.csproj", "{FCD3E92F-FEE9-414D-A460-09F7F685B83E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{12C59CE2-9CF7-44F4-B27C-90754609F979} = {12C59CE2-9CF7-44F4-B27C-90754609F979}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Repository.UITests", "Components\Repository\Tests\UITests\White.Repository.UITests.csproj", "{168E237E-07C8-4379-8199-9FDEB6B7D402}"
 EndProject
@@ -52,6 +49,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.Framework.WPF", "Components\CustomCommands\Framework\CustomCommands.Framework.WPF.csproj", "{81A680B4-21B8-4AF4-8D6E-795376E6F855}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.UnitTests", "Components\CustomCommands\Tests\CustomCommands.UnitTests\CustomCommands.UnitTests.csproj", "{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{12C59CE2-9CF7-44F4-B27C-90754609F979} = {12C59CE2-9CF7-44F4-B27C-90754609F979}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.WPFTests", "Components\CustomCommands\Tests\CustomCommands.WPFTests\CustomCommands.WPFTests.csproj", "{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}"
 EndProject
