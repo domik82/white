@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using White.Core.Logging;
-using Reporting.Utility;
 
 namespace Reporting.Domain
 {
