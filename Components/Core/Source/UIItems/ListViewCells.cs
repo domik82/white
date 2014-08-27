@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using Bricks.Core;
@@ -21,9 +22,8 @@ namespace White.Core.UIItems
         {
             get
             {
-                if (header == null && S.IsEmpty(columnName)) return this[0];
                 if (header == null) throw new UIActionException("Cannot get cell for " + columnName);
-                return this[header.Column(columnName)];
+                return this[header.Column(columnName).Index];
             }
         }
 

@@ -18,7 +18,7 @@ namespace White.Core.UIItems.ListViewItems
         {
             get
             {
-                ListViewColumn column = Find(delegate(ListViewColumn obj) { return obj.Name.Equals(text); });
+                ListViewColumn column = Find(col => col.Name.Equals(text));
                 if (column == null) throw new UIItemSearchException("Cannot find column with text " + text);
                 return column;
             }

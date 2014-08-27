@@ -27,7 +27,7 @@ namespace White.Core.UIItems.ListViewItems
 
         public virtual ListViewColumn Column(string text)
         {
-            return Columns.Find(delegate(ListViewColumn column) { return column.Text.Equals(text); });
+            return Columns.Find(column => column.Text.Equals(text));
         }
     }
 }
